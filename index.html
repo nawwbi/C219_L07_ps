@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/391dbc840a.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    <script src="tags.js"></script>
+    <title>L07 assignment</title>
+</head>
+
+<style>
+    .icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .img-fluid {
+        height: 260px;
+
+    }
+
+    .icon-end {
+        padding: 10px;
+    }
+
+    .green {
+        color: green;
+    }
+
+    .grey {
+        color: grey;
+    }
+
+    .bookmark-cards {
+        width: 200px;
+    }
+
+    @media (max-width: 768px) {
+        .img-banner {
+            display: none;
+        }
+
+        .icon-group {
+            justify-content: end;
+        }
+
+        .bookmark-cards {
+            width: 400px;
+        }
+    }
+
+    .carousel-arrow {
+        display: flex;
+        justify-content: space-between;
+    }
+</style>
+
+<script>
+    $(document).ready(function () {
+        $("#acct").click(function () {
+            $(".green").toggleClass("grey");
+        });
+        $(".fa-bookmark").attr({ "data-bs-toggle": "tooltip", "title": "Add to Bookmarks", "data-placement": "top", "role": "button", "type": "button" });
+        $('[data-bs-toggle="tooltip"]').tooltip();
+
+        $(".fa-bookmark").click(function () {
+            $(this).closest(".card").clone().addClass("bookmark-cards").appendTo("#offcanvasBottom .offcanvas-body")
+        });
+        $("#searchInput").autocomplete({
+            source:searchTags
+        })
+    })
+</script>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">SOI Learning Portal</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                            aria-expanded="false" href="#">Courses</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">HTML</a>
+                            <a class="dropdown-item" href="#">CSS</a>
+                            <a class="dropdown-item" href="#">PHP</a>
+                            <a class="dropdown-item" href="#">JavaScript</a>
+                            <a class="dropdown-item" href="#">Python</a>
+                            <a class="dropdown-item" href="#">Java</a>
+                            <a class="dropdown-item" href="#">iOS</a>
+                            <a class="dropdown-item" href="#">React</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+                <div class="nav-end d-flex">
+                    <form class="d-flex">
+                        <input id="searchInput" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                    <div class="icon-group d-flex ms-2">
+                        <div class="icon-end">
+                            <i id="notif" class="dropdown fa-solid fa-bell" data-bs-toggle="dropdown"></i>
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="notif">
+                                <a class="dropdown-item" href="#">-------</a>
+                                <a class="dropdown-item" href="#">-------</a>
+                            </div>
+                        </div>
+                        <i id="acct" class="fa-solid fa-user green icon-end align-self-center"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid p-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 p-3">
+                    <h1>Welcome to SOI Learning Portal</h1>
+                    <div class="lead pb-3">
+                        Expertly crafted courses that best fit your learning needs and preferences.
+                    </div>
+                    <button type="button" class="btn btn-primary mb-1">Browse Courses</button>
+                    <button type="button" class="btn btn-outline-primary">Be an Instructor</button>
+                </div>
+                <div class="col-sm-6 my-auto img-banner">
+                    <img class=" img-fluid d-block mx-auto" src="resources/no-bg.png">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container p-4">
+        <div class="row content-center">
+            <div class="col content-center">
+                <img class="icon" src="resources/learning.png">
+                <div>
+                    <h3>158 online courses</h3>
+                    <p>Enjoy a variety of fresh topics</p>
+                </div>
+            </div>
+            <div class="col">
+                <img class="icon" src="resources/award.png">
+                <div>
+                    <h3>Expert instruction</h3>
+                    <p>Find the right instructor for you</p>
+                </div>
+            </div>
+            <div class="col">
+                <img class="icon" src="resources/calendar.png">
+                <div>
+                    <h3>Lifetime access</h3>
+                    <p>Learn on your schedule</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container p-4">
+        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
+            aria-controls="offcanvasBottom">Bookmarks</button>
+    </div>
+
+    <div class="offcanvas h-auto offcanvas-bottom" tabindex="-1" id="offcanvasBottom"
+        aria-labelledby="offcanvasBottomLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasBottomLabel">Bookmarks</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body d-flex flex-wrap gap-3 w-100 justify-content-center">
+
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="container-lg">
+
+                <div class="carousel-arrow">
+                    <a href="#carousel" class="btn" role="button" data-bs-slide="prev"><i
+                            class="fa-solid fa-arrow-left" style="font-size: 25px"></i></a>
+                    <a href="#carousel" class="btn" role="button" data-bs-slide="next"><i
+                            class="fa-solid fa-arrow-right" style="font-size: 25px"></i></a>
+                </div>
+
+            <div id="carousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
+                                <div class="card">
+                                    <img src="resources/slide1.jpg" class="card-img-top">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Introduction to HTML and CSS</h5>
+                                        <p class="card-text">Some example text to build on the card title and make up
+                                            the bulk
+                                            of the
+                                            card's content.</p>
+                                        <p class="card-text">Estimated duration: 2h 30m</p>
+                                        <div class="pb-2">
+                                            <a href="#" class="btn btn-primary">Learn more</a>
+                                        </div>
+                                        <div class="card-footer text-muted">Hannah Lim<i
+                                                class="fa-solid fa-bookmark float-end"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6 col-sm-12">
+                                <div class="card">
+                                    <img src="resources/slide2.jpg" class="card-img-top">
+                                    <div class="card-body">
+                                        <h5 class="card-title">User Experience and Interface Design</h5>
+                                        <p class="card-text">Some example text to build on the card title and make up
+                                            the bulk
+                                            of the
+                                            card's content.</p>
+                                        <p class="card-text">Estimated duration: 2h 45m</p>
+                                        <div class="pb-2">
+                                            <a href="#" class="btn btn-primary">Learn more</a>
+                                        </div>
+                                        <div class="card-footer text-muted">Julia Lee<i
+                                                class="fa-solid fa-bookmark float-end"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6 col-sm-12">
+                                <div class="card">
+                                    <img src="resources/slide3.jpg" class="card-img-top">
+                                    <div class="card-body">
+                                        <h5 class="card-title">iOS App Development using Xcode and Swift</h5>
+                                        <p class="card-text">Some example text to build on the card title and make up
+                                            the bulk
+                                            of the
+                                            card's content.</p>
+                                        <p class="card-text">Estimated duration: 4h 30min</p>
+                                        <div class="pb-2">
+                                            <a href="#" class="btn btn-primary">Learn more</a>
+                                        </div>
+                                        <div class="card-footer text-muted">Ryan Low<i
+                                                class="fa-solid fa-bookmark float-end"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6 col-sm-12">
+                                <div class="card">
+                                    <img src="resources/slide4.jpg" class="card-img-top">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Front-end JavaScript Frameworks</h5>
+                                        <p class="card-text">Some example text to build on the card title and make up
+                                            the bulk
+                                            of the
+                                            card's content.</p>
+                                        <p class="card-text">Estimated duration: 3h 45m</p>
+                                        <div class="pb-2">
+                                            <a href="#" class="btn btn-primary">Learn more</a>
+                                        </div>
+                                        <div class="card-footer text-muted">Azhar Kamar<i
+                                                class="fa-solid fa-bookmark float-end"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
+                                <div class="card">
+                                    <img src="resources/slide1.jpg" class="card-img-top">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Introduction to HTML and CSS</h5>
+                                        <p class="card-text">Some example text to build on the card title and make up
+                                            the bulk
+                                            of the
+                                            card's content.</p>
+                                        <p class="card-text">Estimated duration: 2h 30m</p>
+                                        <div class="pb-2">
+                                            <a href="#" class="btn btn-primary">Learn more</a>
+                                        </div>
+                                        <div class="card-footer text-muted">Hannah Lim<i
+                                                class="fa-solid fa-bookmark float-end"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6 col-sm-12">
+                                <div class="card">
+                                    <img src="resources/slide2.jpg" class="card-img-top">
+                                    <div class="card-body">
+                                        <h5 class="card-title">User Experience and Interface Design</h5>
+                                        <p class="card-text">Some example text to build on the card title and make up
+                                            the bulk
+                                            of the
+                                            card's content.</p>
+                                        <p class="card-text">Estimated duration: 2h 45m</p>
+                                        <div class="pb-2">
+                                            <a href="#" class="btn btn-primary">Learn more</a>
+                                        </div>
+                                        <div class="card-footer text-muted">Julia Lee<i
+                                                class="fa-solid fa-bookmark float-end"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6 col-sm-12">
+                                <div class="card">
+                                    <img src="resources/slide3.jpg" class="card-img-top">
+                                    <div class="card-body">
+                                        <h5 class="card-title">iOS App Development using Xcode and Swift</h5>
+                                        <p class="card-text">Some example text to build on the card title and make up
+                                            the bulk
+                                            of the
+                                            card's content.</p>
+                                        <p class="card-text">Estimated duration: 4h 30min</p>
+                                        <div class="pb-2">
+                                            <a href="#" class="btn btn-primary">Learn more</a>
+                                        </div>
+                                        <div class="card-footer text-muted">Ryan Low<i
+                                                class="fa-solid fa-bookmark float-end"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6 col-sm-12">
+                                <div class="card">
+                                    <img src="resources/slide4.jpg" class="card-img-top">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Front-end JavaScript Frameworks</h5>
+                                        <p class="card-text">Some example text to build on the card title and make up
+                                            the bulk
+                                            of the
+                                            card's content.</p>
+                                        <p class="card-text">Estimated duration: 3h 45m</p>
+                                        <div class="pb-2">
+                                            <a href="#" class="btn btn-primary">Learn more</a>
+                                        </div>
+                                        <div class="card-footer text-muted">Azhar Kamar<i
+                                                class="fa-solid fa-bookmark float-end"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <footer class="py-3 my-4">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Privacy</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Terms</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Feedback</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Support</a></li>
+            </ul>
+            <p class="text-center text-muted">&copy; 2021 SOI Learning Portal. All Rights Reserved.</p>
+        </footer>
+    </div>
+</body>
